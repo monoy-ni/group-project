@@ -1,0 +1,525 @@
+/* 身体健康管理页面样式 */
+.health-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.health-page h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* 标签页样式 */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.tabs button {
+  padding: 12px 24px;
+  margin: 0 10px 10px 0;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.tabs button:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-1px);
+}
+
+.tabs button.active {
+  background-color: #4CAF50;
+  color: white;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+/* 标签内容样式 */
+.tab-content {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  min-height: 400px;
+}
+
+.tab-content h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.tab-content p {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* 健康数据概览样式 */
+.health-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.health-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.health-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.health-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.health-value {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.health-value .unit {
+  font-size: 14px;
+  font-weight: normal;
+  color: #666;
+  margin-left: 5px;
+}
+
+.health-label {
+  font-size: 16px;
+  color: #666;
+}
+
+/* 最近健康记录样式 */
+.records-table {
+  margin-bottom: 30px;
+  overflow-x: auto;
+}
+
+.records-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.records-table th,
+.records-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.records-table th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  color: #333;
+}
+
+.records-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.view-btn {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.view-btn:hover {
+  background-color: #0b7dda;
+}
+
+/* 实时健康监测样式 */
+.monitoring-section {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  border-left: 4px solid #4CAF50;
+}
+
+.monitoring-status {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.status-indicator.active {
+  background-color: #4CAF50;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+/* 在线问诊样式 */
+.departments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.department-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.department-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.department-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #2196F3;
+  color: white;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.department-card h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.department-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.btn-secondary {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #0b7dda;
+}
+
+/* 问诊历史样式 */
+.consultation-history {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.consultation-history h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+}
+
+.history-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: white;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.history-date {
+  font-weight: 500;
+  color: #333;
+}
+
+.history-type {
+  color: #666;
+}
+
+/* 饮食推荐样式 */
+.diet-preference {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.diet-preference h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.preference-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.tag {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.edit-btn {
+  background-color: transparent;
+  color: #2196F3;
+  border: 1px solid #2196F3;
+  border-radius: 4px;
+  padding: 6px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.edit-btn:hover {
+  background-color: #2196F3;
+  color: white;
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.recipe-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-image {
+  height: 180px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.recipe-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.recipe-card:hover .recipe-image img {
+  transform: scale(1.05);
+}
+
+.recipe-info {
+  padding: 20px;
+}
+
+.recipe-info h4 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.recipe-info p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.btn-primary {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn-primary:hover {
+  background-color: #388E3C;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .health-page {
+    padding: 10px;
+  }
+  
+  .health-page h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .tabs {
+    margin-bottom: 20px;
+  }
+  
+  .tabs button {
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  
+  .tab-content {
+    padding: 20px;
+    min-height: 300px;
+  }
+  
+  .tab-content h2 {
+    font-size: 20px;
+  }
+  
+  .health-cards, 
+  .departments-grid, 
+  .recipes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .health-card, 
+  .department-card, 
+  .recipe-card {
+    padding: 15px;
+  }
+  
+  .health-icon, 
+  .department-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .health-value {
+    font-size: 24px;
+  }
+  
+  .recipe-image {
+    height: 150px;
+  }
+  
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .health-page h1 {
+    font-size: 20px;
+  }
+  
+  .tabs button {
+    padding: 8px 16px;
+    font-size: 13px;
+    margin-right: 5px;
+    margin-bottom: 8px;
+  }
+  
+  .tab-content {
+    padding: 15px;
+  }
+  
+  .tab-content h2 {
+    font-size: 18px;
+  }
+  
+  .health-value {
+    font-size: 20px;
+  }
+  
+  .records-table th,
+  .records-table td {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .view-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .history-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .edit-btn {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  
+  .preference-tags {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
