@@ -22,10 +22,34 @@ function MentalHealthPage() {
       setChatMessages([...chatMessages, { id: chatMessages.length + 1, sender: 'user', content: inputMessage }]);
       // 模拟机器人回复
       setTimeout(() => {
-        setChatMessages(prev => [...prev, { id: prev.length + 1, sender: 'bot', content: '感谢您的分享，我会认真倾听您的感受。' }]);
+        const responses = {
+          '我感到焦虑': '我理解您的焦虑感受。焦虑是很常见的情绪，让我们一起来探讨一些缓解焦虑的方法。您可以尝试深呼吸练习，或者告诉我具体是什么让您感到焦虑？',
+          '我睡不好': '睡眠问题确实会影响我们的身心健康。建议您保持规律的作息时间，睡前避免使用电子设备，可以尝试一些放松技巧。您的睡眠问题持续多久了？',
+          '我感到孤独': '孤独感是很多人都会经历的情绪，您不是一个人。建议您可以多参与社交活动，与家人朋友保持联系，或者培养一些兴趣爱好。您愿意分享一下是什么让您感到孤独吗？',
+          '我压力很大': '压力过大确实会影响我们的生活质量。让我们一起找到压力的来源，并学习一些压力管理的技巧。您可以尝试运动、冥想或者与信任的人交流。是什么给您带来了压力？'
+        };
+        const response = responses[inputMessage] || '感谢您的分享，我会认真倾听您的感受。请告诉我更多关于您的想法和感受。';
+        setChatMessages(prev => [...prev, { id: prev.length + 1, sender: 'bot', content: response }]);
       }, 1000);
       setInputMessage('');
     }
+  };
+
+  const handleQuickTopic = (topic) => {
+    setInputMessage(topic);
+    setChatMessages([...chatMessages, { id: chatMessages.length + 1, sender: 'user', content: topic }]);
+    // 模拟机器人回复
+    setTimeout(() => {
+      const responses = {
+        '我感到焦虑': '我理解您的焦虑感受。焦虑是很常见的情绪，让我们一起来探讨一些缓解焦虑的方法。您可以尝试深呼吸练习，或者告诉我具体是什么让您感到焦虑？',
+        '我睡不好': '睡眠问题确实会影响我们的身心健康。建议您保持规律的作息时间，睡前避免使用电子设备，可以尝试一些放松技巧。您的睡眠问题持续多久了？',
+        '我感到孤独': '孤独感是很多人都会经历的情绪，您不是一个人。建议您可以多参与社交活动，与家人朋友保持联系，或者培养一些兴趣爱好。您愿意分享一下是什么让您感到孤独吗？',
+        '我压力很大': '压力过大确实会影响我们的生活质量。让我们一起找到压力的来源，并学习一些压力管理的技巧。您可以尝试运动、冥想或者与信任的人交流。是什么给您带来了压力？'
+      };
+      const response = responses[topic] || '感谢您的分享，我会认真倾听您的感受。请告诉我更多关于您的想法和感受。';
+      setChatMessages(prev => [...prev, { id: prev.length + 1, sender: 'bot', content: response }]);
+    }, 1000);
+    setInputMessage('');
   };
 
   return (
@@ -62,6 +86,9 @@ function MentalHealthPage() {
             <div className="chat-messages">
               {chatMessages.map(message => (
                 <div key={message.id} className={`message ${message.sender}`}>
+                  <div className="message-avatar">
+                    {message.sender === 'bot' ? '🤖' : '👤'}
+                  </div>
                   <div className="message-content">{message.content}</div>
                 </div>
               ))}
@@ -72,18 +99,24 @@ function MentalHealthPage() {
                 placeholder="输入您想聊的内容..."
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
               />
-              <button onClick={handleSendMessage}>发送</button>
+              <button onClick={handleSendMessage}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                </svg>
+              </button>
             </div>
           </div>
 
           <div className="quick-topics">
             <h3>快捷话题</h3>
             <div className="topic-buttons">
-              <button className="topic-btn">我感到焦虑</button>
-              <button className="topic-btn">我睡不好</button>
-              <button className="topic-btn">我感到孤独</button>
-              <button className="topic-btn">我压力很大</button>
+              <button className="topic-btn" onClick={() => handleQuickTopic('我感到焦虑')}>我感到焦虑</button>
+              <button className="topic-btn" onClick={() => handleQuickTopic('我睡不好')}>我睡不好</button>
+              <button className="topic-btn" onClick={() => handleQuickTopic('我感到孤独')}>我感到孤独</button>
+              <button className="topic-btn" onClick={() => handleQuickTopic('我压力很大')}>我压力很大</button>
             </div>
           </div>
         </div>
