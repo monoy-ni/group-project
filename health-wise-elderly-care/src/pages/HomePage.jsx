@@ -10,7 +10,7 @@ function HomePage() {
         <p>全方位关爱老年人的健康与生活</p>
         <div className="cta-buttons">
           <Link to="/health" className="btn-primary">开始健康之旅</Link>
-          <Link to="/profile" className="btn-secondary">登录/注册</Link>
+          <Link to="/login" className="btn-secondary">登录/注册</Link>
         </div>
       </header>
 

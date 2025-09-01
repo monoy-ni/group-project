@@ -10,6 +10,7 @@ import FamilyMonitorPage from './pages/FamilyMonitorPage';
 import ProfilePage from './pages/ProfilePage';
 import FamilyCommunicationPage from './pages/FamilyCommunicationPage';
 import NotFoundPage from './pages/NotFoundPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/family" element={<FamilyMonitorPage />} />
             <Route path="/communication" element={<FamilyCommunicationPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
