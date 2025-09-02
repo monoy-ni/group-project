@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [selectedRole, setSelectedRole] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
+    
+    // 如果选择年轻人身份，自动跳转到年轻人仪表板
+    if (role === 'young') {
+      navigate('/young-dashboard');
+    }
   };
 
   const handleSubmit = (e) => {

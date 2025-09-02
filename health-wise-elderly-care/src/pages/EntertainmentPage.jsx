@@ -21,13 +21,7 @@ const EntertainmentPage = () => {
     { id: 4, title: '诗歌朗诵', speaker: '李老师', duration: '25:10', plays: '9.5千' },
   ];
 
-  // 模拟游戏数据
-  const games = [
-    { id: 1, title: '记忆连连看', type: '益智', difficulty: '简单', players: '5.6千' },
-    { id: 2, title: '象棋对战', type: '策略', difficulty: '中等', players: '3.2千' },
-    { id: 3, title: '数字拼图', type: '益智', difficulty: '简单', players: '2.8千' },
-    { id: 4, title: '麻将达人', type: '休闲', difficulty: '中等', players: '4.1千' },
-  ];
+
 
   // 模拟兴趣课程数据
   const courses = [
@@ -36,12 +30,7 @@ const EntertainmentPage = () => {
     { id: 3, title: '健康养生知识', description: '了解老年人常见健康问题及预防方法。', teacher: '张医生', duration: '10课时' },
   ];
 
-  // 模拟休闲活动数据
-  const leisureActivities = [
-    { id: 1, name: '冥想放松', description: '10分钟冥想，缓解压力和焦虑', duration: '10分钟' },
-    { id: 2, name: '情绪日记', description: '记录今天的心情和感受', duration: '15分钟' },
-    { id: 3, name: '呼吸练习', description: '深呼吸练习，平静心情', duration: '5分钟' },
-  ];
+
 
   return (
     <div className="entertainment-page">
@@ -60,24 +49,14 @@ const EntertainmentPage = () => {
         >
           音频节目
         </button>
-        <button
-          className={`tab-button ${activeTab === 'games' ? 'active' : ''}`}
-          onClick={() => setActiveTab('games')}
-        >
-          益智游戏
-        </button>
+
         <button
           className={`tab-button ${activeTab === 'courses' ? 'active' : ''}`}
           onClick={() => setActiveTab('courses')}
         >
           兴趣课程
         </button>
-        <button
-          className={`tab-button ${activeTab === 'leisure' ? 'active' : ''}`}
-          onClick={() => setActiveTab('leisure')}
-        >
-          休闲活动
-        </button>
+
       </div>
 
       <div className="content-container">
@@ -118,19 +97,7 @@ const EntertainmentPage = () => {
           </div>
         )}
 
-        {activeTab === 'games' && (
-          <div className="game-grid">
-            {games.map((game) => (
-              <div key={game.id} className="game-card">
-                <h3 className="game-title">{game.title}</h3>
-                <p className="game-type">类型: {game.type}</p>
-                <p className="game-difficulty">难度: {game.difficulty}</p>
-                <p className="game-players">{game.players} 人在玩</p>
-                <button className="play-game-button">开始游戏</button>
-              </div>
-            ))}
-          </div>
-        )}
+
 
         {activeTab === 'courses' && (
           <div className="course-list">
@@ -148,45 +115,7 @@ const EntertainmentPage = () => {
           </div>
         )}
 
-        {activeTab === 'leisure' && (
-          <div className="leisure-activities">
-            <h3 className="leisure-title">休闲活动</h3>
-            <p>参与有益身心健康的活动，缓解压力，放松心情。</p>
 
-            <div className="activities-grid">
-              {leisureActivities.map(activity => (
-                <div key={activity.id} className="activity-card">
-                  <h3>{activity.name}</h3>
-                  <p className="activity-description">{activity.description}</p>
-                  <p className="activity-duration">{activity.duration}</p>
-                  <button className="btn-secondary">开始</button>
-                </div>
-              ))}
-            </div>
-
-            <div className="support-groups">
-              <h3>兴趣小组</h3>
-              <p>加入兴趣小组，与志同道合的朋友交流分享。</p>
-              <div className="groups-grid">
-                <div className="group-card">
-                  <h4>冥想爱好者</h4>
-                  <p>成员: 128人</p>
-                  <button className="join-btn">加入</button>
-                </div>
-                <div className="group-card">
-                  <h4>书法交流</h4>
-                  <p>成员: 95人</p>
-                  <button className="join-btn">加入</button>
-                </div>
-                <div className="group-card">
-                  <h4>园艺爱好者</h4>
-                  <p>成员: 76人</p>
-                  <button className="join-btn">加入</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
 
       <div className="recommendation-section">

@@ -35,7 +35,7 @@ function HomePage() {
               </svg>
             </div>
             <h3>心理健康</h3>
-            <p>心灵助手、情绪监测、专业心理咨询，呵护您的心理健康。</p>
+            <p>心灵助手、情绪监测，呵护您的心理健康。</p>
             <Link to="/mental" className="learn-more">了解更多</Link>
           </div>
 
@@ -47,7 +47,7 @@ function HomePage() {
               </svg>
             </div>
             <h3>娱乐学习</h3>
-            <p>线上老年大学、听戏听书、广场舞教学，丰富您的精神生活。</p>
+            <p>线上老年大学、听戏听书，丰富您的精神生活。</p>
             <Link to="/entertainment" className="learn-more">了解更多</Link>
           </div>
 

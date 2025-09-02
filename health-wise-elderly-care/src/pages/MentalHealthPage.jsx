@@ -9,13 +9,9 @@ function MentalHealthPage() {
     { id: 1, sender: 'bot', content: '您好！我是您的心灵助手，有什么可以帮助您的吗？' }
   ]);
   const [inputMessage, setInputMessage] = useState('');
+  const [moodHistory, setMoodHistory] = useState([]); // 心情历史记录
 
-  // 模拟活动列表
-  const activities = [
-    { id: 1, name: '冥想放松', description: '10分钟冥想，缓解压力和焦虑', duration: '10分钟' },
-    { id: 2, name: '情绪日记', description: '记录今天的心情和感受', duration: '15分钟' },
-    { id: 3, name: '呼吸练习', description: '深呼吸练习，平静心情', duration: '5分钟' },
-  ];
+
 
   const handleSendMessage = () => {
     if (inputMessage.trim()) {
@@ -69,12 +65,7 @@ function MentalHealthPage() {
         >
           情绪监测
         </button>
-        <button 
-          className={activeTab === 'activities' ? 'active' : ''} 
-          onClick={() => setActiveTab('activities')}
-        >
-          心理活动
-        </button>
+
       </div>
 
       {activeTab === 'mindHelper' && (
@@ -134,7 +125,17 @@ function MentalHealthPage() {
                 <button
                   key={level}
                   className={mood === level ? 'active' : ''}
-                  onClick={() => setMood(level)}
+                  onClick={() => {
+                    setMood(level);
+                    // 实时记录心情到历史
+                    const newRecord = {
+                      id: Date.now(),
+                      mood: level,
+                      date: new Date().toLocaleDateString('zh-CN'),
+                      time: new Date().toLocaleTimeString('zh-CN')
+                    };
+                    setMoodHistory(prev => [...prev, newRecord]);
+                  }}
                 >
                   {level === 1 && <span>非常不好</span>}
                   {level === 2 && <span>不好</span>}
@@ -144,60 +145,35 @@ function MentalHealthPage() {
                 </button>
               ))}
             </div>
-            <button className="btn-primary">记录心情</button>
           </div>
 
           <div className="mood-history">
             <h3>心情历史</h3>
-            <div className="mood-chart">
-              {/* 这里将显示心情变化图表 */}
+            {moodHistory.length > 0 ? (
+              <div className="mood-records">
+                {moodHistory.map(record => (
+                  <div key={record.id} className="mood-record">
+                    <span className="mood-date">{record.date} {record.time}</span>
+                    <span className={`mood-level mood-${record.mood}`}>
+                      {record.mood === 1 && '非常不好'}
+                      {record.mood === 2 && '不好'}
+                      {record.mood === 3 && '一般'}
+                      {record.mood === 4 && '好'}
+                      {record.mood === 5 && '非常好'}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
               <div className="chart-placeholder">
-                <p>心情变化图表将在这里显示</p>
+                <p>暂无心情记录，点击上方心情按钮开始记录</p>
               </div>
-            </div>
+            )}
           </div>
         </div>
       )}
 
-      {activeTab === 'activities' && (
-        <div className="tab-content">
-          <h2>心理活动</h2>
-          <p>参与有益心理健康的活动，缓解压力，放松心情。</p>
 
-          <div className="activities-grid">
-            {activities.map(activity => (
-              <div key={activity.id} className="activity-card">
-                <h3>{activity.name}</h3>
-                <p className="activity-description">{activity.description}</p>
-                <p className="activity-duration">{activity.duration}</p>
-                <button className="btn-secondary">开始</button>
-              </div>
-            ))}
-          </div>
-
-          <div className="support-groups">
-            <h3>支持小组</h3>
-            <p>加入兴趣小组，与志同道合的朋友交流分享。</p>
-            <div className="groups-grid">
-              <div className="group-card">
-                <h4>冥想爱好者</h4>
-                <p>成员: 128人</p>
-                <button className="join-btn">加入</button>
-              </div>
-              <div className="group-card">
-                <h4>书法交流</h4>
-                <p>成员: 95人</p>
-                <button className="join-btn">加入</button>
-              </div>
-              <div className="group-card">
-                <h4>园艺爱好者</h4>
-                <p>成员: 76人</p>
-                <button className="join-btn">加入</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
