@@ -396,7 +396,7 @@ const FamilyGroupChat = () => {
               )}
               
               <div className={`message-bubble ${
-                isAI ? 'ai-bubble' : message.emotion
+                isCurrentUser ? 'sent' : isAI ? 'ai-bubble' : message.emotion
               }`}>
                 <div className="message-content">{message.content}</div>
                 <div className="message-time">{message.time}</div>
