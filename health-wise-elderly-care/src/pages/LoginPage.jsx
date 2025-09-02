@@ -49,13 +49,7 @@ const LoginPage = () => {
               <span>我是老年人</span>
             </button>
             
-            <button
-              className={`role-btn ${selectedRole === 'admin' ? 'selected' : ''}`}
-              onClick={() => handleRoleSelect('admin')}
-            >
-              <div className="role-icon">👨‍💼</div>
-              <span>我是服务管理员</span>
-            </button>
+
           </div>
         </div>
 
