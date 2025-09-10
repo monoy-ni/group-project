@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-function Navbar() {
+function Navbar({ userRole }) {
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -10,12 +10,37 @@ function Navbar() {
           健康与智慧养老系统
         </Link>
         <div className="navbar-menu">
-          <Link to="/health" className="navbar-link">身体健康</Link>
-          <Link to="/mental" className="navbar-link">心理健康</Link>
-          <Link to="/entertainment" className="navbar-link">娱乐学习</Link>
-          <Link to="/family" className="navbar-link">家庭监测</Link>
-          <Link to="/communication" className="navbar-link">家庭沟通</Link>
-          <Link to="/profile" className="navbar-link">个人中心</Link>
+          {/* 根据用户角色显示不同的导航链接 */}
+          {userRole === 'elderly' ? (
+            // 老年人导航链接
+            <>
+              <Link to="/health" className="navbar-link">身体健康</Link>
+              <Link to="/mental" className="navbar-link">心理健康</Link>
+              <Link to="/entertainment" className="navbar-link">娱乐学习</Link>
+              <Link to="/communication" className="navbar-link">家庭沟通</Link>
+              <Link to="/profile" className="navbar-link">个人中心</Link>
+            </>
+          ) : userRole === 'young' ? (
+            // 年轻人导航链接
+            <>
+              <Link to="/health" className="navbar-link">身体健康</Link>
+              <Link to="/mental" className="navbar-link">心理健康</Link>
+              <Link to="/entertainment" className="navbar-link">娱乐学习</Link>
+              <Link to="/family" className="navbar-link">家庭监测</Link>
+              <Link to="/communication" className="navbar-link">家庭沟通</Link>
+              <Link to="/profile" className="navbar-link">个人中心</Link>
+            </>
+          ) : (
+            // 未登录或未知角色显示所有链接
+            <>
+              <Link to="/health" className="navbar-link">身体健康</Link>
+              <Link to="/mental" className="navbar-link">心理健康</Link>
+              <Link to="/entertainment" className="navbar-link">娱乐学习</Link>
+              <Link to="/family" className="navbar-link">家庭监测</Link>
+              <Link to="/communication" className="navbar-link">家庭沟通</Link>
+              <Link to="/profile" className="navbar-link">个人中心</Link>
+            </>
+          )}
         </div>
         <button className="voice-button">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -269,6 +269,14 @@ const YoungDashboardPage = () => {
     }
   };
 
+  // 退出登录处理
+  const handleLogout = () => {
+    // 清除localStorage中的用户角色
+    localStorage.removeItem('userRole');
+    // 跳转到登录页面
+    window.location.href = '/login';
+  };
+
   // 模拟老年人回复（通过WebSocket接收）
   const simulateElderlyResponse = (message) => {
     // 模拟WebSocket接收老年人消息
@@ -306,7 +314,7 @@ const YoungDashboardPage = () => {
     <div className="young-dashboard">
       {/* 顶部导航 */}
       <div className="dashboard-header">
-        <h1>{isYoungRole ? '年轻人关爱平台' : '老年人沟通平台'}</h1>
+        <h1>老年人关爱平台</h1>
         <div className="user-info">
           <span>{isYoungRole ? '👦 年轻人身份' : '👴 老年人身份'}</span>
           <button 
@@ -618,7 +626,7 @@ const YoungDashboardPage = () => {
                 <button>🔔 通知设置</button>
                 <button>🎨 主题设置</button>
                 <button>❓ 帮助中心</button>
-                <button>🚪 退出登录</button>
+                <button onClick={handleLogout}>🚪 退出登录</button>
               </div>
             </div>
 
@@ -641,6 +649,18 @@ const YoungDashboardPage = () => {
             </div>
           </div>
         )}
+      </div>
+
+      {/* 底部宣传语 */}
+      <div className="footer-promotion">
+        <div className="promotion-content">
+          <h3>❤️ 关爱老人，温暖相伴</h3>
+          <div className="promotion-slogans">
+            <p>"用心呵护每一位长辈的幸福晚年"</p>
+            <p>"让关爱成为最美的陪伴"</p>
+            <p>"孝心传递，温暖永驻"</p>
+          </div>
+        </div>
       </div>
     </div>
   );

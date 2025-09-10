@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #4CAF50;
+  background-color: #FF8C42;
   color: white;
   padding: 1rem 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -52,6 +52,14 @@
 
 .voice-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 统一色调变量 */
+:root {
+  --primary-color: #FF8C42;
+  --primary-gradient: linear-gradient(135deg, #FF8C42 0%, #FF6B6B 100%);
+  --primary-light: #FFD8B1;
+  --primary-dark: #E67E22;
 }
 
 /* 响应式设计 */

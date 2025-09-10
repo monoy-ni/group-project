@@ -4,6 +4,64 @@
   margin: 0 auto;
 }
 
+.page-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.back-button {
+  background: #FF8C42;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background: #E67E22;
+}
+
+/* 功能快速切换栏 */
+.function-bar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+.function-btn {
+  background: #FF8C42;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.function-btn:hover {
+  background: #E67E22;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.function-btn.active {
+  background: #E67E22;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 .page-title {
   font-size: 28px;
   color: #333;
@@ -49,7 +107,7 @@
 }
 
 .edit-profile-button {
-  background-color: #4CAF50;
+  background-color: #FF8C42;
   color: white;
   border: none;
   border-radius: 4px;
@@ -61,7 +119,7 @@
 }
 
 .edit-profile-button:hover {
-  background-color: #388E3C;
+  background-color: #E67E22;
 }
 
 /* 标签页样式 */
@@ -84,7 +142,7 @@
 }
 
 .tab-button.active {
-  background-color: #4CAF50;
+  background-color: #FF8C42;
   color: white;
 }
 
@@ -153,7 +211,7 @@
 }
 
 .view-report-button {
-  background-color: #2196F3;
+  background-color: #FF8C42;
   color: white;
   border: none;
   border-radius: 4px;
@@ -163,7 +221,7 @@
 }
 
 .view-report-button:hover {
-  background-color: #0b7dda;
+  background-color: #E67E22;
 }
 
 /* 账户安全样式 */

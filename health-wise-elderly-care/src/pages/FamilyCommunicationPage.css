@@ -114,7 +114,7 @@
 .contacts-panel {
   width: 320px;
   border-right: 1px solid #f0f0f0;
-  background-color: rgba(255, 248, 252, 0.9);
+  background-color: rgba(255, 248, 240, 0.9);
   display: flex;
   flex-direction: column;
 }
@@ -124,8 +124,8 @@
   font-weight: 600;
   padding: 20px;
   border-bottom: 1px solid #f0f0f0;
-  background-color: rgba(255, 240, 245, 0.95);
-  color: #e91e63;
+  background-color: rgba(255, 236, 179, 0.95);
+  color: #FF8C42;
 }
 
 .contacts-list {
@@ -644,13 +644,13 @@
 
 .contacts-list::-webkit-scrollbar-thumb,
 .chat-messages::-webkit-scrollbar-thumb {
-  background: #f48fb1;
+  background: #FFB74D;
   border-radius: 4px;
 }
 
 .contacts-list::-webkit-scrollbar-thumb:hover,
 .chat-messages::-webkit-scrollbar-thumb:hover {
-  background: #e91e63;
+  background: #FF8C42;
 }
 
 /* 壁纸选择器样式 */

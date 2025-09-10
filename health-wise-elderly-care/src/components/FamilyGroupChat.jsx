@@ -106,7 +106,9 @@ const FamilyGroupChat = () => {
   const messagesEndRef = useRef(null);
   const [aiMediationEnabled, setAiMediationEnabled] = useState(true);
   const [isSending, setIsSending] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
   const sendButtonRef = useRef(null);
+  const ws = useRef(null);
   
   // 为每个家庭成员创建独立的聊天历史
   const [chatHistories, setChatHistories] = useState({
@@ -154,6 +156,100 @@ const FamilyGroupChat = () => {
     ]
   });
   
+  // WebSocket连接和消息处理
+  useEffect(() => {
+    // 连接到WebSocket服务器
+    const connectWebSocket = () => {
+      try {
+        // 连接到本地WebSocket服务器
+        ws.current = new WebSocket('ws://localhost:3001');
+        
+        ws.current.onopen = () => {
+          setIsConnected(true);
+          console.log('WebSocket连接成功 - 家庭沟通');
+          
+          // 发送用户身份信息
+          ws.current.send(JSON.stringify({
+            type: 'user_join',
+            data: {
+              userId: 'user',
+              userName: '我',
+              userType: 'elder'
+            }
+          }));
+        };
+        
+        ws.current.onmessage = (event) => {
+          const data = JSON.parse(event.data);
+          handleWebSocketMessage(data);
+        };
+        
+        ws.current.onclose = () => {
+          setIsConnected(false);
+          console.log('WebSocket连接关闭');
+        };
+        
+        ws.current.onerror = (error) => {
+          console.error('WebSocket错误:', error);
+          setIsConnected(false);
+        };
+        
+      } catch (error) {
+        console.error('WebSocket连接失败:', error);
+      }
+    };
+
+    connectWebSocket();
+    
+    return () => {
+      // 清理时关闭WebSocket连接
+      if (ws.current) {
+        ws.current.close();
+      }
+    };
+  }, []);
+
+  // 处理WebSocket接收到的消息
+  const handleWebSocketMessage = (data) => {
+    switch (data.type) {
+      case 'family_message':
+        // 检查消息是否属于当前用户的对话
+        const isRelevantMessage = 
+          data.data.senderId === 'user' ||
+          data.data.receiverId === 'user' ||
+          data.data.receiverId === selectedMember.id ||
+          data.data.senderId === selectedMember.id;
+        
+        if (isRelevantMessage) {
+          const newMsg = {
+            id: messages.length + 1,
+            senderId: data.data.senderId,
+            senderName: data.data.senderName,
+            content: data.data.content,
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            emotion: data.data.emotion || 'neutral'
+          };
+          
+          const updatedMessages = [...messages, newMsg];
+          setMessages(updatedMessages);
+          
+          // 更新对应家庭成员的聊天历史
+          setChatHistories(prev => ({
+            ...prev,
+            [selectedMember.id]: updatedMessages
+          }));
+        }
+        break;
+        
+      case 'user_join':
+        console.log('用户加入:', data.data);
+        break;
+        
+      default:
+        console.log('收到未知类型的消息:', data);
+    }
+  };
+
   // 切换家庭成员时加载对应的聊天历史
   useEffect(() => {
     setMessages(chatHistories[selectedMember.id] || []);
@@ -229,6 +325,24 @@ const FamilyGroupChat = () => {
       emotion: emotion
     };
     
+    // 通过WebSocket发送消息
+    if (isConnected && ws.current && ws.current.readyState === WebSocket.OPEN) {
+      ws.current.send(JSON.stringify({
+        type: 'family_message',
+        data: {
+          senderId: 'user',
+          senderName: '我',
+          senderType: 'elder',
+          receiverId: selectedMember.id,
+          receiverName: selectedMember.name,
+          receiverType: 'family',
+          content: newMessage,
+          emotion: emotion,
+          timestamp: new Date().toISOString()
+        }
+      }));
+    }
+    
     // 模拟发送延迟
     setTimeout(() => {
       const updatedMessages = [...messages, newMsg];
@@ -281,6 +395,25 @@ const FamilyGroupChat = () => {
     };
     
     const updatedMessages = [...currentMessages, message];
+    
+    // 通过WebSocket发送模拟消息
+    if (isConnected && ws.current && ws.current.readyState === WebSocket.OPEN) {
+      ws.current.send(JSON.stringify({
+        type: 'family_message',
+        data: {
+          senderId: memberId,
+          senderName: member.name,
+          senderType: 'family',
+          receiverId: 'user',
+          receiverName: '我',
+          receiverType: 'elder',
+          content: content,
+          emotion: emotion,
+          isNagging: isNagging,
+          timestamp: new Date().toISOString()
+        }
+      }));
+    }
     
     // 更新聊天历史
     setChatHistories(prev => ({

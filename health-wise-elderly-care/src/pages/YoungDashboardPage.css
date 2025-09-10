@@ -1,7 +1,7 @@
 /* 年轻人仪表板主容器 */
 .young-dashboard {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #FFF5EB 0%, #FFE4CC 100%);
   color: #333;
 }
 
@@ -30,12 +30,12 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  background: linear-gradient(45deg, #4299e1, #3182ce);
+  background: linear-gradient(45deg, #FF8C42, #FF6B6B);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 25px;
   font-weight: 500;
-  box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
 }
 
 .role-toggle-btn {
@@ -86,9 +86,9 @@
 }
 
 .tab-navigation button.active {
-  background: linear-gradient(45deg, #4299e1, #3182ce);
+  background: linear-gradient(45deg, #FF8C42, #FF6B6B);
   color: white;
-  box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4);
+  box-shadow: 0 4px 15px rgba(255, 140, 66, 0.4);
 }
 
 /* 内容区域 */
@@ -1094,4 +1094,45 @@
   .stats-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* 底部宣传语样式 */
+.footer-promotion {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
+}
+
+.promotion-content h3 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.promotion-slogans {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.promotion-slogans p {
+  font-size: 16px;
+  font-style: italic;
+  margin: 0;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.promotion-slogans p:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.3);
 }

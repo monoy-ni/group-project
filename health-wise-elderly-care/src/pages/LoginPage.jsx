@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 
-const LoginPage = () => {
+const LoginPage = ({ onRoleSelect }) => {
   const navigate = useNavigate();
   const [selectedRole, setSelectedRole] = useState('');
   const [username, setUsername] = useState('');
@@ -11,9 +11,16 @@ const LoginPage = () => {
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
     
-    // 如果选择年轻人身份，自动跳转到年轻人仪表板
+    // 调用父组件传递的回调函数
+    if (onRoleSelect) {
+      onRoleSelect(role);
+    }
+    
+    // 根据选择的身份跳转到对应的仪表板
     if (role === 'young') {
       navigate('/young-dashboard');
+    } else if (role === 'elderly') {
+      navigate('/elderly-dashboard');
     }
   };
 

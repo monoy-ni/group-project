@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './ProfilePage.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('basic');
   
   // 用户信息
@@ -63,7 +64,32 @@ const ProfilePage = () => {
   
   return (
     <div className="profile-page">
-      <h2 className="page-title">个人中心</h2>
+      <div className="page-header">
+        <button className="back-button" onClick={() => navigate('/elderly-dashboard')}>
+          ← 返回
+        </button>
+        <h1>个人中心</h1>
+      </div>
+
+      {/* 功能快速切换栏 */}
+      <div className="function-bar">
+        <button className="function-btn" onClick={() => navigate('/health')}>
+          💪 身体健康
+        </button>
+        <button className="function-btn" onClick={() => navigate('/mental')}>
+          🧠 心理健康
+        </button>
+        <button className="function-btn" onClick={() => navigate('/entertainment')}>
+          🎭 娱乐学习
+        </button>
+        <button className="function-btn" onClick={() => navigate('/communication')}>
+          👨‍👩‍👧‍👦 家庭沟通
+        </button>
+        <button className="function-btn active">
+          👤 个人中心
+        </button>
+      </div>
+       <h2 className="page-title">个人中心</h2>
       
       {/* 用户头像和基本信息卡片 */}
       <div className="profile-header">

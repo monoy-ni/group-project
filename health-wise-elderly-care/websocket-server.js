@@ -36,8 +36,27 @@ wss.on('connection', function connection(ws) {
       const parsedData = JSON.parse(data);
       console.log('收到消息:', parsedData);
       
-      // 广播消息给所有客户端（除了发送者）
-      broadcast(parsedData, ws);
+      // 根据消息类型处理
+      if (parsedData.type === 'family_message') {
+        // 家庭消息：只发送给特定接收者（如果在线）
+        const receiverId = parsedData.data.receiverId;
+        let receiverFound = false;
+        
+        clients.forEach(client => {
+          // 这里需要客户端在连接时发送身份信息，暂时广播给所有客户端
+          if (client !== ws && client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify(parsedData));
+            receiverFound = true;
+          }
+        });
+        
+        if (!receiverFound) {
+          console.log('接收者不在线，消息无法送达');
+        }
+      } else {
+        // 其他类型消息：广播给所有客户端（除了发送者）
+        broadcast(parsedData, ws);
+      }
     } catch (error) {
       console.error('消息解析错误:', error);
     }

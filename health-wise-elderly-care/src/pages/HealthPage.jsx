@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './HealthPage.css';
 
 function HealthPage() {
+  const navigate = useNavigate();
   // 模拟健康数据
   const healthData = {
     heartRate: 72,
@@ -30,7 +31,31 @@ function HealthPage() {
 
   return (
     <div className="health-page">
-      <h1>身体健康管理</h1>
+      <div className="page-header">
+        <button className="back-button" onClick={() => navigate('/elderly-dashboard')}>
+          ← 返回
+        </button>
+        <h1>身体健康管理</h1>
+      </div>
+
+      {/* 功能快速切换栏 */}
+      <div className="function-bar">
+        <button className="function-btn active">
+          💪 身体健康
+        </button>
+        <button className="function-btn" onClick={() => navigate('/mental')}>
+          🧠 心理健康
+        </button>
+        <button className="function-btn" onClick={() => navigate('/entertainment')}>
+          🎭 娱乐学习
+        </button>
+        <button className="function-btn" onClick={() => navigate('/communication')}>
+          👨‍👩‍👧‍👦 家庭沟通
+        </button>
+        <button className="function-btn" onClick={() => navigate('/profile')}>
+          👤 个人中心
+        </button>
+      </div>
 
       <div className="tabs">
         <button 

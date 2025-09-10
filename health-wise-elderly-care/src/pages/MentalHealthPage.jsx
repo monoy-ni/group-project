@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './MentalHealthPage.css';
 
 function MentalHealthPage() {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('mindHelper');
   const [mood, setMood] = useState(3); // 1-5 表示情绪状态
   const [chatMessages, setChatMessages] = useState([
@@ -50,7 +51,31 @@ function MentalHealthPage() {
 
   return (
     <div className="mental-health-page">
-      <h1>心理健康管理</h1>
+      <div className="page-header">
+        <button className="back-button" onClick={() => navigate('/elderly-dashboard')}>
+          ← 返回
+        </button>
+        <h1>心理健康管理</h1>
+      </div>
+
+      {/* 功能快速切换栏 */}
+      <div className="function-bar">
+        <button className="function-btn" onClick={() => navigate('/health')}>
+          💪 身体健康
+        </button>
+        <button className="function-btn active">
+          🧠 心理健康
+        </button>
+        <button className="function-btn" onClick={() => navigate('/entertainment')}>
+          🎭 娱乐学习
+        </button>
+        <button className="function-btn" onClick={() => navigate('/communication')}>
+          👨‍👩‍👧‍👦 家庭沟通
+        </button>
+        <button className="function-btn" onClick={() => navigate('/profile')}>
+          👤 个人中心
+        </button>
+      </div>
 
       <div className="tabs">
         <button 

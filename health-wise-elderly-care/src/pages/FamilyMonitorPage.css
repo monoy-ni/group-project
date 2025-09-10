@@ -129,7 +129,7 @@
 }
 
 .tab-button.active {
-  background-color: #4CAF50;
+  background-color: #FF8C42;
   color: white;
 }
 
@@ -185,8 +185,8 @@
 }
 
 .card-status.normal {
-  background-color: #e8f5e9;
-  color: #4CAF50;
+  background-color: #FFF5EB;
+  color: #FF8C42;
 }
 
 .card-status.warning {
@@ -220,7 +220,7 @@
 .chart-line {
   position: absolute;
   height: 2px;
-  background-color: #4CAF50;
+  background-color: #FF8C42;
   left: 0;
   width: 100%;
   top: 20%;
